@@ -1,2 +1,2 @@
 # myHome
-My introduce Website for studing
+My introduce Website for studying
