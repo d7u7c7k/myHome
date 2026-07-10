@@ -1,587 +1,325 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>이정우 | raahoo</title>
-  <!-- 눈이 편안한 프리미엄 폰트 적용 (Pretendard & Inter) -->
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome 아이콘 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Pretendard', 'Inter', 'sans-serif'],
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>raahoo | Software Developer</title>
+    <meta name="description" content="High School Software Developer • Toss Mini App Developer">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme:{
+                extend:{
+                    colors:{
+                        primary:"#3B82F6",
+                        card:"#111113",
+                        border:"#27272A",
+                        bg:"#09090B"
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
-  
-  <style>
-    /* 스무스 스크롤 효과 및 트랜지션 정의 */
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Pretendard', 'Inter', sans-serif;
-      transition: background-color 0.5s ease, color 0.5s ease;
-      overflow-x: hidden;
-    }
-    /* 테마 변경 시 모든 요소에 부드러운 색상 전환 적용 */
-    *, *::before, *::after {
-      transition: background-color 0.3s ease, border-color 0.3s ease, text-decoration-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
-    }
-    /* 스크롤바 커스텀 */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-color, #0f0f11);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary-color, #f59e0b);
-      border-radius: 4px;
-    }
-    /* 커스텀 테마 변수 기본값 (따뜻하고 감성적인 골드/옐로우 테마) */
-    :root {
-      --bg-color: #0f0f11;
-      --card-bg: #17171a;
-      --text-color: #f4f4f5;
-      --text-muted: #a1a1aa;
-      --primary-color: #f59e0b;
-      --primary-hover: #d97706;
-    }
+    </script>
 
-    /* ─── 인트로 우주 워프 & 3D 땡김 애니메이션 효과 정의 ─── */
-    
-    /* 전체 콘텐츠의 초기 상태: 아주 멀리서 작게 축소되어 대기 */
-    .intro-pending {
-      opacity: 0;
-      transform: scale(0.3) translateY(300px) translateZ(-800px);
-      filter: blur(15px);
-      perspective: 1000px;
-    }
+    <style>
 
-    /* 3D 땡겨오는 강력한 스프링 이펙트 (우주 워프 후 폭발적 진입) */
-    .warp-pull-in {
-      animation: warpPullIn 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-    }
+        body{
+            background:#09090B;
+            color:white;
+            font-family:Pretendard,sans-serif;
+        }
 
-    /* 상단 네비게이션 탭용 순차적 땡김 딜레이 애니메이션 */
-    .warp-pull-nav {
-      animation: warpPullNav 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
-    }
+        .glass{
+            background:rgba(255,255,255,.03);
+            backdrop-filter:blur(16px);
+            border:1px solid rgba(255,255,255,.06);
+        }
 
-    @keyframes warpPullIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.35) translateY(250px) translateZ(-600px);
-        filter: blur(12px);
-      }
-      35% {
-        opacity: 0.1;
-        filter: blur(8px);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) translateY(0) translateZ(0);
-        filter: blur(0);
-      }
-    }
+        .gradient{
+            background:
+            radial-gradient(circle at top,#2563eb33,transparent 40%);
+        }
 
-    @keyframes warpPullNav {
-      0% {
-        opacity: 0;
-        transform: translateY(-80px);
-      }
-      50% {
-        opacity: 0;
-        transform: translateY(-40px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+        .card{
+            transition:.35s;
+        }
+
+        .card:hover{
+            transform:translateY(-6px);
+            border-color:#3B82F6;
+        }
+
+        .mono{
+            font-family:"JetBrains Mono",monospace;
+        }
+
+    </style>
+
 </head>
-<body class="bg-[var(--bg-color)] text-[var(--text-color)] min-h-screen flex flex-col selection:bg-[var(--primary-color)] selection:text-black overflow-x-hidden">
 
-  <!-- 우주 워프 및 밤하늘 은하수를 표현하기 위한 캔버스 추가 -->
-  <canvas id="star-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0 bg-[#070709]"></canvas>
+<body class="gradient">
 
-  <!-- 테마 설정 사이드바 (사용자 커스텀 제어판) -->
-  <div id="theme-panel" class="fixed top-0 right-0 h-full w-80 bg-[var(--card-bg)] shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out border-l border-zinc-800">
-    <div class="p-6 h-full flex flex-col justify-between overflow-y-auto">
-      <div>
-        <div class="flex items-center justify-between pb-6 border-b border-zinc-800">
-          <h3 class="text-xl font-bold flex items-center gap-2">
-            <i class="fa-solid fa-palette text-[var(--primary-color)]"></i> 테마 커스터마이징
-          </h3>
-          <button onclick="toggleThemePanel()" class="text-zinc-400 hover:text-[var(--text-color)] transition-colors">
-            <i class="fa-solid fa-xmark text-xl"></i>
-          </button>
-        </div>
+<nav class="fixed top-0 left-0 w-full z-50 glass">
 
-        <!-- 1. 사전 설정 테마 프리셋 -->
-        <div class="mt-6">
-          <h4 class="text-sm font-semibold text-[var(--text-muted)] mb-3">추천 테마 프리셋</h4>
-          <div class="grid grid-cols-2 gap-2">
-            <button onclick="applyPreset('#0f0f11', '#17171a', '#f4f4f5', '#a1a1aa', '#f59e0b')" class="p-2 rounded text-xs bg-[#17171a] text-[#f4f4f5] border border-zinc-700 hover:border-amber-500 text-left">
-              🌙 아늑한 골드
-            </button>
-            <button onclick="applyPreset('#0f172a', '#1e293b', '#f8fafc', '#94a3b8', '#38bdf8')" class="p-2 rounded text-xs bg-[#1e293b] text-[#f8fafc] border border-zinc-700 hover:border-sky-400 text-left">
-              🌊 오션 디프
-            </button>
-            <button onclick="applyPreset('#141c15', '#1f2a20', '#f0fdf4', '#a7f3d0', '#10b981')" class="p-2 rounded text-xs bg-[#1f2a20] text-[#f0fdf4] border border-zinc-700 hover:border-emerald-500 text-left">
-              🌲 포레스트 무드
-            </button>
-            <button onclick="applyPreset('#fdfbf7', '#ffffff', '#1c1917', '#78716c', '#d97706')" class="p-2 rounded text-xs bg-white text-[#1c1917] border border-zinc-300 hover:border-amber-600 text-left">
-              ☀️ 아날로그 크림
-            </button>
-          </div>
-        </div>
+<div class="max-w-7xl mx-auto flex justify-between items-center h-16 px-6">
 
-        <!-- 2. 세부 수동 조절 (Color Picker) -->
-        <div class="mt-8 space-y-4">
-          <h4 class="text-sm font-semibold text-[var(--text-muted)] border-b border-zinc-800 pb-2">실시간 색상 상세 정의</h4>
-          
-          <div class="flex items-center justify-between">
-            <label for="color-bg" class="text-sm">전체 배경색</label>
-            <input type="color" id="color-bg" oninput="updateCustomTheme()" class="w-8 h-8 rounded cursor-pointer border-0">
-          </div>
-          
-          <div class="flex items-center justify-between">
-            <label for="color-card" class="text-sm">카드/상자 배경색</label>
-            <input type="color" id="color-card" oninput="updateCustomTheme()" class="w-8 h-8 rounded cursor-pointer border-0">
-          </div>
+<h1 class="font-bold text-xl">
 
-          <div class="flex items-center justify-between">
-            <label for="color-text" class="text-sm">기본 글자색</label>
-            <input type="color" id="color-text" oninput="updateCustomTheme()" class="w-8 h-8 rounded cursor-pointer border-0">
-          </div>
+raahoo
 
-          <div class="flex items-center justify-between">
-            <label for="color-primary" class="text-sm">강조 글자/포인트색</label>
-            <input type="color" id="color-primary" oninput="updateCustomTheme()" class="w-8 h-8 rounded cursor-pointer border-0">
-          </div>
-        </div>
-      </div>
+</h1>
 
-      <div class="pt-6 border-t border-zinc-800">
-        <button onclick="resetTheme()" class="w-full py-2 bg-zinc-800 hover:bg-zinc-700 text-white text-sm rounded font-medium transition-colors">
-          <i class="fa-solid fa-rotate-left mr-1"></i> 기본 설정으로 초기화
-        </button>
-        <p class="text-[10px] text-center text-zinc-500 mt-3">설정된 눈이 편안한 색상은 사용자의 브라우저에 저장됩니다.</p>
-      </div>
-    </div>
-  </div>
+<div class="hidden md:flex gap-8 text-gray-400">
 
-  <!-- 헤더 & 네비게이션 -->
-  <header id="main-header" class="intro-pending sticky top-0 z-40 backdrop-blur-md bg-[var(--bg-color)]/80 border-b border-zinc-800/50 transition-all duration-300">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <!-- 메인 로고 심볼 -->
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[var(--primary-color)] to-yellow-300 flex items-center justify-center text-black font-extrabold text-xl shadow-lg shadow-amber-500/10">
-          R
-        </div>
-        <div>
-          <span class="font-extrabold text-lg tracking-tight">raahoo</span>
-          <span class="text-xs block text-[var(--text-muted)] -mt-1 font-medium">Core Developer</span>
-        </div>
-      </a>
-      
-      <!-- 네비게이션 링크 -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="#about" class="hover:text-[var(--primary-color)] transition-colors">About</a>
-        <a href="#achievements" class="hover:text-[var(--primary-color)] transition-colors">Achievements</a>
-        <a href="game.html" class="px-3 py-1.5 rounded-lg bg-[var(--primary-color)]/10 text-[var(--primary-color)] hover:bg-[var(--primary-color)]/20 transition-all flex items-center gap-1.5 font-bold">
-          <i class="fa-solid fa-gamepad"></i> Minigame
-        </a>
-      </nav>
+<a href="#experience" class="hover:text-white">Experience</a>
 
-      <!-- 우측 액션 버튼들 -->
-      <div class="flex items-center gap-3">
-        <button onclick="toggleThemePanel()" class="px-3 py-2 bg-zinc-800/80 hover:bg-zinc-700/80 text-zinc-200 text-xs font-semibold rounded-lg flex items-center gap-2 border border-zinc-700/50 shadow-sm">
-          <i class="fa-solid fa-wand-magic-sparkles text-[var(--primary-color)]"></i> 
-          <span>테마 커스텀</span>
-        </button>
-      </div>
-    </div>
-  </header>
+<a href="#projects" class="hover:text-white">Projects</a>
 
-  <!-- 메인 프레임뷰 -->
-  <main class="flex-grow z-10 relative">
-    
-    <!-- 포트폴리오 메인 홈 섹션 -->
-    <div id="home-view" class="view-content transition-all duration-300">
-      
-      <!-- 메인 히어로 섹션 -->
-      <section id="about" class="intro-pending max-w-6xl mx-auto px-6 py-20 md:py-32 flex flex-col md:flex-row items-center gap-12">
-        <!-- 텍스트 영역 -->
-        <div class="flex-1 space-y-6">
-          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
-            안녕하세요, <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-color)] to-amber-300">이정우</span> 입니다.
-          </h1>
-          <p class="text-xl md:text-2xl text-[var(--text-color)] leading-relaxed font-semibold">
-            "작은 시작으로 넓게 보기까지, <br>저의 꿈을 현실로 만듭니다."
-          </p>
-          <p class="text-sm text-[var(--text-muted)] leading-relaxed max-w-md">
-            닉네임 <strong class="text-[var(--text-color)] font-semibold">raahoo</strong>로 다양한 도메인에서 활동하며 아이디어를 뛰어난 품질의 프로덕트로 구체화합니다.
-          </p>
-          
-          <!-- 소셜 / 대표 링크 배지 -->
-          <div class="flex flex-wrap gap-3 pt-2">
-            <span class="px-3 py-1.5 bg-[var(--card-bg)] border border-zinc-800/80 rounded-lg text-xs flex items-center gap-1.5">
-              <i class="fa-brands fa-github text-[var(--primary-color)]"></i> Github 활성유저
-            </span>
-            <span class="px-3 py-1.5 bg-[var(--card-bg)] border border-zinc-800/80 rounded-lg text-xs flex items-center gap-1.5">
-              <i class="fa-solid fa-code text-[var(--primary-color)]"></i> 스크립트 전문가
-            </span>
-            <span class="px-3 py-1.5 bg-[var(--card-bg)] border border-zinc-800/80 rounded-lg text-xs flex items-center gap-1.5">
-              <i class="fa-solid fa-robot text-[var(--primary-color)]"></i> 로보틱스 우승자
-            </span>
-          </div>
+<a href="#archive" class="hover:text-white">Code Archive</a>
 
-          <div class="pt-4 flex gap-4">
-            <a href="#achievements" class="px-6 py-3 bg-[var(--primary-color)] hover:bg-[var(--primary-hover)] text-black font-bold rounded-xl shadow-lg shadow-amber-500/10 transition-all transform hover:-translate-y-0.5 text-sm">
-              업적 보러가기 <i class="fa-solid fa-arrow-down ml-1"></i>
-            </a>
-            <a href="game.html" class="px-6 py-3 bg-[var(--card-bg)] hover:bg-zinc-800 text-[var(--text-color)] font-semibold rounded-xl border border-zinc-800/80 transition-all text-sm flex items-center gap-2">
-              <i class="fa-solid fa-gamepad text-[var(--primary-color)]"></i> 미니게임 플레이
-            </a>
-          </div>
-        </div>
+<a href="#contact" class="hover:text-white">Contact</a>
 
-        <!-- 시각 데코레이션 패널 (이정우 상징) -->
-        <div class="flex-1 w-full flex justify-center items-center">
-          <div class="relative w-72 h-72 md:w-96 md:h-96">
-            <!-- 가상의 구체 라이팅 레이어 -->
-            <div class="absolute -inset-4 bg-gradient-to-tr from-[var(--primary-color)] to-yellow-300 rounded-full opacity-15 blur-2xl"></div>
-            
-            <!-- 카드 프레임 형태의 시각자료 -->
-            <div class="absolute inset-0 bg-[var(--card-bg)] rounded-3xl border border-zinc-800/80 p-8 flex flex-col justify-between shadow-2xl overflow-hidden">
-              <div class="flex justify-between items-center">
-                <div class="flex gap-1.5">
-                  <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
-                  <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
-                </div>
-                <span class="text-xs font-mono text-[var(--text-muted)]">profile.json</span>
-              </div>
-              
-              <div class="space-y-4 my-auto font-mono text-xs md:text-sm">
-                <p class="text-cyan-400">const developer = {</p>
-                <p class="pl-4 text-amber-300">name: <span class="text-yellow-200">"Lee Jungwoo"</span>,</p>
-                <p class="pl-4 text-amber-300">nickname: <span class="text-yellow-200">"raahoo"</span>,</p>
-                <p class="pl-4 text-amber-300">motto: <span class="text-yellow-200">"Dream To Reality"</span>,</p>
-                <p class="pl-4 text-amber-300">comfortDesign: <span class="text-emerald-400">true</span>,</p>
-                <p class="pl-4 text-amber-300">warpEffectActive: <span class="text-emerald-400">true</span></p>
-                <p class="text-cyan-400">};</p>
-              </div>
-              
-              <div class="flex items-center gap-3 border-t border-zinc-800/80 pt-4">
-                <div class="w-8 h-8 rounded-full bg-[var(--primary-color)]/20 flex items-center justify-center text-[var(--primary-color)] text-xs font-bold">
-                  LW
-                </div>
-                <div>
-                  <p class="text-xs font-bold">이정우 (raahoo)</p>
-                  <p class="text-[10px] text-[var(--text-muted)]">Core Creator & Engineer</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+</div>
 
-      <!-- 업적 섹션 (Achievements) -->
-      <section id="achievements" class="intro-pending max-w-6xl mx-auto px-6 py-20 border-t border-zinc-800/40">
-        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">
-            대표 업적 & 히스토리
-          </h2>
-          <p class="text-[var(--text-muted)] text-sm">
-            이정우(raahoo) 개발자가 직접 완성하고 기여해온 대표 프로젝트들입니다.
-          </p>
-        </div>
+<a href="https://github.com/"
+class="bg-primary px-5 py-2 rounded-xl font-semibold">
 
-        <!-- 그리드 레이아웃 -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
-          <!-- 업적 카드 1: Skript 외주 -->
-          <div class="bg-[var(--card-bg)] border border-zinc-800/60 rounded-2xl p-6 md:p-8 hover:border-[var(--primary-color)]/40 transition-all hover:shadow-xl hover:shadow-yellow-500/5 group flex gap-6">
-            <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center flex-shrink-0 text-xl group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-scroll"></i>
-            </div>
-            <div class="space-y-2">
-              <span class="text-[10px] font-bold text-orange-400 tracking-wider uppercase font-mono">Service Contract</span>
-              <h3 class="text-xl font-bold group-hover:text-[var(--primary-color)] transition-colors">Skript 외주 비즈니스</h3>
-              <p class="text-sm text-[var(--text-muted)] leading-relaxed">
-                마인크래프트의 Skript 분야에서 게임, 시스템, 스킬, 서버, 컨텐츠등을 제작하였습니다.
-              </p>
-            </div>
-          </div>
+GitHub
 
-          <!-- 업적 카드 2: 앱인토스 지하철 길잡이 출시 -->
-          <div class="bg-[var(--card-bg)] border border-zinc-800/60 rounded-2xl p-6 md:p-8 hover:border-[var(--primary-color)]/40 transition-all hover:shadow-xl hover:shadow-yellow-500/5 group flex gap-6">
-            <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center flex-shrink-0 text-xl group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-subway"></i>
-            </div>
-            <div class="space-y-2">
-              <span class="text-[10px] font-bold text-blue-400 tracking-wider uppercase font-mono">Mobile App Launch</span>
-              <h3 class="text-xl font-bold group-hover:text-[var(--primary-color)] transition-colors">앱인토스 지하철 길잡이 앱 출시</h3>
-              <p class="text-sm text-[var(--text-muted)] leading-relaxed">
-                토스 미니앱에서 지하철에 대한 모든것을 안내 해주고, 길잡이가 되어줄 지하철 길잡이 앱을 출시했습니다.
-              </p>
-            </div>
-          </div>
+</a>
 
-          <!-- 업적 카드 3: 교내 로보틱스 대회 우승 -->
-          <div class="bg-[var(--card-bg)] border border-zinc-800/60 rounded-2xl p-6 md:p-8 hover:border-[var(--primary-color)]/40 transition-all hover:shadow-xl hover:shadow-yellow-500/5 group flex gap-6">
-            <div class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center flex-shrink-0 text-xl group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-trophy"></i>
-            </div>
-            <div class="space-y-2">
-              <span class="text-[10px] font-bold text-yellow-400 tracking-wider uppercase font-mono">Award Winner</span>
-              <h3 class="text-xl font-bold group-hover:text-[var(--primary-color)] transition-colors">교내 로보틱스 대회 우승</h3>
-              <p class="text-sm text-[var(--text-muted)] leading-relaxed">
-                2인 팀으로 하드웨어, 소프트웨어를 구현하여 친환경 에너지 아이디어로 교내 로보틱스 대회에서 우승했습니다.
-              </p>
-            </div>
-          </div>
+</div>
 
-          <!-- 업적 카드 4: 휴몬들 크루 콘텐츠팀 -->
-          <div class="bg-[var(--card-bg)] border border-zinc-800/60 rounded-2xl p-6 md:p-8 hover:border-[var(--primary-color)]/40 transition-all hover:shadow-xl hover:shadow-yellow-500/5 group flex gap-6">
-            <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center flex-shrink-0 text-xl group-hover:scale-110 transition-transform">
-              <i class="fa-brands fa-youtube"></i>
-            </div>
-            <div class="space-y-2">
-              <span class="text-[10px] font-bold text-red-400 tracking-wider uppercase font-mono">Media & Community</span>
-              <h3 class="text-xl font-bold group-hover:text-[var(--primary-color)] transition-colors">유튜브 '휴몬들' 크루 컨텐츠팀</h3>
-              <p class="text-sm text-[var(--text-muted)] leading-relaxed">
-                마인크래프트 유튜브 크루인 휴몬들에서 컨텐츠나 시스템을 제작하는 컨텐츠팀으로써 활동중입니다.
-              </p>
-            </div>
-          </div>
+</nav>
 
-        </div>
-      </section>
-    </div>
+<section class="min-h-screen flex items-center">
 
-  </main>
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 px-8">
 
-  <!-- 푸터 -->
-  <footer class="bg-[var(--card-bg)] border-t border-zinc-900/60 py-12 transition-all">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="text-center md:text-left">
-        <p class="text-sm font-bold">Lee Jungwoo (raahoo)</p>
-        <p class="text-xs text-[var(--text-muted)] mt-1">© 2026 raahoo Portfolio. All rights reserved.</p>
-      </div>
-      <div class="flex items-center gap-6 text-zinc-400">
-        <a href="https://github.com" target="_blank" class="hover:text-[var(--primary-color)] text-xl transition-colors"><i class="fa-brands fa-github"></i></a>
-        <a href="#" class="hover:text-[var(--primary-color)] text-xl transition-colors"><i class="fa-brands fa-youtube"></i></a>
-        <a href="#" class="hover:text-[var(--primary-color)] text-xl transition-colors"><i class="fa-solid fa-envelope"></i></a>
-      </div>
-    </div>
-  </footer>
+<div>
 
-  <!-- 테마 상태 관리 및 우주 배경 엔진 자바스크립트 -->
-  <script>
-    // ──── 3D 우주 배경(Starfield) & 인트로 워프 스피드 렌더링 ────
-    const canvas = document.getElementById('star-canvas');
-    const ctx = canvas.getContext('2d');
-    
-    let stars = [];
-    const numStars = 220; // 생성할 별의 수
-    let warpFactor = 45;   // 초기 하이퍼스페이스 감속 계수 (매우 빠름)
-    let isWarping = true;  // 인트로 상태 플래그
+<p class="text-primary font-semibold">
 
-    // 우주 배경 중앙 지점 설정
-    let centerX = canvas.width / 2;
-    let centerY = canvas.height / 2;
+Software Developer
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      centerX = canvas.width / 2;
-      centerY = canvas.height / 2;
-    }
-    
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+</p>
 
-    // 3차원 우주 시뮬레이션을 위한 성단 좌표 초기화
-    function init3DStars() {
-      stars = [];
-      for (let i = 0; i < numStars; i++) {
-        stars.push({
-          x: Math.random() * canvas.width - centerX,
-          y: Math.random() * canvas.height - centerY,
-          z: Math.random() * canvas.width, // 가상 깊이
-          color: Math.random() > 0.4 ? '#fff' : '#f59e0b'
-        });
-      }
-    }
+<h1 class="text-6xl font-black mt-4 leading-tight">
 
-    // 우주 렌더링 루프
-    function drawSpace() {
-      // 투명도를 이용한 모션 블러 잔상 효과 극대화 (워프 속도감 추가)
-      const clearOpacity = isWarping ? 0.08 : 0.22;
-      ctx.fillStyle = `rgba(7, 7, 9, ${clearOpacity})`;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+토스 미니앱을 출시한<br>
 
-      let primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim() || '#f59e0b';
+고1 개발자<br>
 
-      for (let i = 0; i < numStars; i++) {
-        let s = stars[i];
-        
-        // Z축 깊이를 줄이며 다가오는 별 움직임
-        s.z -= warpFactor;
+<span class="text-primary">raahoo</span>
 
-        // 화면 밖으로 지나간 별은 깊이를 다시 리셋
-        if (s.z <= 0) {
-          s.z = canvas.width;
-          s.x = Math.random() * canvas.width - centerX;
-          s.y = Math.random() * canvas.height - centerY;
-        }
+</h1>
 
-        // 3D 원근 투영 공식 적용
-        const px = (s.x / s.z) * canvas.width + centerX;
-        const py = (s.y / s.z) * canvas.height + centerY;
+<p class="mt-8 text-gray-400 text-lg leading-8">
 
-        // 원근감에 근거한 스케일 적용 (가까울수록 커짐)
-        const size = (1 - s.z / canvas.width) * 2.8;
+서비스를 기획하고
 
-        // 중심으로부터 현재 위치까지의 꼬리 흔적 계산 (Warp Stretch)
-        const stretchZ = s.z + (warpFactor * 2.2);
-        const prevPx = (s.x / stretchZ) * canvas.width + centerX;
-        const prevPy = (s.y / stretchZ) * canvas.height + centerY;
+실제 출시까지 경험한
 
-        if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
-          ctx.beginPath();
-          ctx.strokeStyle = s.color === '#fff' ? 'rgba(255, 255, 255, 0.75)' : `${primaryColor}aa`;
-          ctx.lineWidth = size;
-          ctx.lineCap = 'round';
-          ctx.moveTo(px, py);
-          ctx.lineTo(prevPx, prevPy);
-          ctx.stroke();
-        }
-      }
+High School Software Developer.
 
-      // 인트로 감속 제어 (약 1.5초 후 정상 속도로 복귀)
-      if (isWarping) {
-        warpFactor -= 0.65; // 속도를 서서히 낮춤
-        if (warpFactor <= 1.2) {
-          warpFactor = 1.2; // 일반 감상용 순항 속도 정착
-          isWarping = false;
-        }
-      }
+웹, 앱, API, 오픈소스를 만들고
 
-      requestAnimationFrame(drawSpace);
-    }
+새로운 아이디어를 현실로 구현합니다.
 
-    // 캔버스 초기 실행
-    init3DStars();
-    drawSpace();
+</p>
 
-    // ──── 페이지 진입 로드 연출 & 3D 땡김 트리거 제어 ────
-    window.addEventListener('DOMContentLoaded', () => {
-      // 1. 기존 테마 불러오기 및 설정 동기화
-      const savedBg = localStorage.getItem('theme-bg') || '#0f0f11';
-      const savedCard = localStorage.getItem('theme-card') || '#17171a';
-      const savedText = localStorage.getItem('theme-text') || '#f4f4f5';
-      const savedMuted = localStorage.getItem('theme-muted') || '#a1a1aa';
-      const savedPrimary = localStorage.getItem('theme-primary') || '#f59e0b';
+<div class="flex gap-4 mt-10">
 
-      applyPreset(savedBg, savedCard, savedText, savedMuted, savedPrimary);
+<a href="#projects"
+class="bg-primary px-7 py-4 rounded-xl font-semibold">
 
-      // 2. 워프 인트로가 어느 정도 안정화되는 시점(약 550ms)에 3D 땡김 애니메이션 적용
-      setTimeout(() => {
-        const pendingElements = document.querySelectorAll('.intro-pending');
-        pendingElements.forEach((el, index) => {
-          // 순차적으로 우주 저편에서 이끌려 오듯이 딜레이 부여
-          el.style.animationDelay = `${index * 120}ms`;
-          
-          if (el.id === 'main-header') {
-            el.classList.add('warp-pull-nav');
-          } else {
-            el.classList.add('warp-pull-in');
-          }
-          el.classList.remove('intro-pending');
-        });
-      }, 550);
-    });
+View Projects
 
-    // 테마 설정 창 토글 제어
-    function toggleThemePanel() {
-      const panel = document.getElementById('theme-panel');
-      const isClosed = panel.classList.contains('translate-x-full');
-      if (isClosed) {
-        panel.classList.remove('translate-x-full');
-      } else {
-        panel.classList.add('translate-x-full');
-      }
-    }
+</a>
 
-    // 테마 값을 실시간으로 전역 CSS 변수에 주입하는 함수
-    function applyPreset(bg, card, text, muted, primary) {
-      document.documentElement.style.setProperty('--bg-color', bg);
-      document.documentElement.style.setProperty('--card-bg', card);
-      document.documentElement.style.setProperty('--text-color', text);
-      document.documentElement.style.setProperty('--text-muted', muted);
-      document.documentElement.style.setProperty('--primary-color', primary);
-      
-      // 마우스 오버용 채도 낮은 호버 컬러 자동 매칭
-      document.documentElement.style.setProperty('--primary-hover', adjustColorBrightness(primary, -15));
+<a href="#archive"
+class="border border-border px-7 py-4 rounded-xl">
 
-      // 입력란 폼의 컬러 피커 값 동기화
-      document.getElementById('color-bg').value = bg;
-      document.getElementById('color-card').value = card;
-      document.getElementById('color-text').value = text;
-      document.getElementById('color-primary').value = primary;
+Code Archive
 
-      // 브라우저 캐시에 선택 테마 정보 저장
-      localStorage.setItem('theme-bg', bg);
-      localStorage.setItem('theme-card', card);
-      localStorage.setItem('theme-text', text);
-      localStorage.setItem('theme-muted', muted);
-      localStorage.setItem('theme-primary', primary);
-    }
+</a>
 
-    // 개별 색상 피커 변경 시 실시간 반영
-    function updateCustomTheme() {
-      const bg = document.getElementById('color-bg').value;
-      const card = document.getElementById('color-card').value;
-      const text = document.getElementById('color-text').value;
-      const primary = document.getElementById('color-primary').value;
-      
-      const muted = text + '88'; // 텍스트 컬러 기반 뮤트 색상 유도
+</div>
 
-      applyPreset(bg, card, text, muted, primary);
-    }
+</div>
 
-    // 따뜻한 옐로우/골드 테마 복구
-    function resetTheme() {
-      applyPreset('#0f0f11', '#17171a', '#f4f4f5', '#a1a1aa', '#f59e0b');
-    }
+<div class="flex justify-center items-center">
 
-    // 색상 명도 어둡기/밝기 보정용 유틸 함수 (Hex 지원)
-    function adjustColorBrightness(hex, percent) {
-      let num = parseInt(hex.replace("#",""), 16),
-      amt = Math.round(2.55 * percent),
-      R = (num >> 16) + amt,
-      G = (num >> 8 & 0x00FF) + amt,
-      B = (num & 0x0000FF) + amt;
-      return "#" + (0x1000000 + (R<255?R<0?0:R:255)*0x10000 + (G<255?G<0?0:G:255)*0x100 + (B<255?B<0?0:B:255)).toString(16).slice(1);
-    }
-  </script>
-</body>
-</html>
+<div class="glass rounded-3xl p-8 w-96">
+
+<div class="w-36 h-36 rounded-full bg-primary mx-auto"></div>
+
+<h2 class="text-center text-2xl font-bold mt-6">
+
+raahoo
+
+</h2>
+
+<p class="text-center text-gray-400">
+
+High School Developer
+
+</p>
+
+<div class="grid grid-cols-2 gap-4 mt-8">
+
+<div class="glass rounded-xl p-4">
+
+<p class="text-gray-500 text-sm">
+
+Projects
+
+</p>
+
+<p class="text-3xl font-bold">
+
+10+
+
+</p>
+
+</div>
+
+<div class="glass rounded-xl p-4">
+
+<p class="text-gray-500 text-sm">
+
+Released
+
+</p>
+
+<p class="text-3xl font-bold">
+
+1+
+
+</p>
+
+</div>
+
+<div class="glass rounded-xl p-4">
+
+<p class="text-gray-500 text-sm">
+
+Repositories
+
+</p>
+
+<p class="text-3xl font-bold">
+
+30+
+
+</p>
+
+</div>
+
+<div class="glass rounded-xl p-4">
+
+<p class="text-gray-500 text-sm">
+
+Learning
+
+</p>
+
+<p class="text-3xl font-bold">
+
+∞
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="experience" class="py-28">
+
+<div class="max-w-7xl mx-auto px-8">
+
+<h2 class="text-4xl font-black">
+
+Featured Experience
+
+</h2>
+
+<div class="glass rounded-3xl mt-12 p-10 card">
+
+<div class="flex justify-between items-start">
+
+<div>
+
+<span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full">
+
+LIVE
+
+</span>
+
+<h3 class="text-4xl font-bold mt-5">
+
+Toss Mini App
+
+</h3>
+
+<p class="text-gray-400 mt-6 leading-8">
+
+토스(Toss) 앱 내 미니앱을 기획하고 개발하여
+실제 출시까지 완료한 프로젝트입니다.
+
+사용자 경험을 중심으로 설계하고
+서비스 운영까지 수행했습니다.
+
+</p>
+
+<div class="flex flex-wrap gap-3 mt-8">
+
+<span class="glass px-4 py-2 rounded-lg">Planning</span>
+
+<span class="glass px-4 py-2 rounded-lg">Frontend</span>
+
+<span class="glass px-4 py-2 rounded-lg">Backend</span>
+
+<span class="glass px-4 py-2 rounded-lg">Product</span>
+
+</div>
+
+</div>
+
+<div class="text-right">
+
+<p class="text-gray-500">
+
+Achievement
+
+</p>
+
+<h1 class="text-6xl font-black mt-3">
+
+01
+
+</h1>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
