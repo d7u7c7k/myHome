@@ -1,46 +1,21 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>raahoo Portfolio</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-zinc-950 text-white">
-<header class="max-w-6xl mx-auto p-6 flex justify-between">
-<h1 class="font-bold text-2xl">raahoo</h1>
-<nav class="space-x-4">
-<a href="#projects">Projects</a>
-<a href="#archive">Code Archive</a>
-<a href="#contact">Contact</a>
-</nav>
-</header>
-<main class="max-w-6xl mx-auto p-6">
-<section class="py-20">
-<h2 class="text-5xl font-bold">토스 미니앱을 출시한<br>고1 개발자 <span class="text-blue-500">raahoo</span></h2>
-<p class="mt-6 text-zinc-400">서비스 기획부터 개발, 출시까지 경험했습니다.</p>
-</section>
-<section id="projects" class="py-12">
-<h3 class="text-3xl font-bold mb-6">Featured Project</h3>
-<div class="card">
-<h4>Toss Mini App</h4>
-<p>토스 미니앱(Appintos 등) 기획 및 개발, 출시.</p>
-</div>
-</section>
-<section id="archive" class="py-12">
-<h3 class="text-3xl font-bold mb-6">Code Archive</h3>
-<div class="card mono">
-<pre><code>def hello():
-    print("Hello Portfolio")</code></pre>
-<button onclick="copyCode()">Copy</button>
-</div>
-</section>
-<section id="contact" class="py-12">
-<h3 class="text-3xl font-bold">Contact</h3>
-<p>GitHub: My_home Repository</p>
-</section>
-</main>
-<script src="js/app.js"></script>
-</body>
-</html>
+<nav class="sticky top-0 backdrop-blur border-b border-zinc-800"><div class="max-w-6xl mx-auto p-5 flex justify-between"><b>raahoo</b><div class="space-x-5"><a href="#exp">Experience</a><a href="#projects">Projects</a><a href="#archive">Archive</a></div></div></nav>
+<section class="max-w-6xl mx-auto min-h-[70vh] flex items-center p-6">
+<div><span class="text-blue-400 font-semibold">High School Software Developer</span>
+<h1 class="text-6xl font-black mt-4">토스 미니앱을<br>출시한 개발자</h1>
+<p class="text-zinc-400 mt-6 max-w-xl">기획부터 개발, 출시까지 경험했습니다. 깔끔한 제품과 개발자 경험을 만드는 것을 좋아합니다.</p>
+<div class="mt-8 flex gap-4"><button class="btn">Projects</button><button class="btn2">GitHub</button></div></div></section>
+<section id="exp" class="max-w-6xl mx-auto p-6"><h2 class="title">Experience</h2><div class="card"><h3>Toss Mini App</h3><p>Appintos 등 토스 미니앱 서비스 기획·개발 및 출시.</p></div></section>
+<section id="projects" class="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-5">
+<div class="card"><h3>Subway API</h3><p>FastAPI 기반 API</p></div>
+<div class="card"><h3>Discord Bot</h3><p>레벨 시스템</p></div></section>
+<section id="archive" class="max-w-6xl mx-auto p-6"><h2 class="title">Code Archive</h2>
+<input id="search" class="w-full bg-zinc-900 p-3 rounded mb-4" placeholder="Search code...">
+<div class="card"><pre><code>fetch('/api').then(r=>r.json())</code></pre><button onclick="copyCode()">Copy</button></div></section>
+</body><script src="js/app.js"></script></html>

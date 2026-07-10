@@ -1,6 +1,1 @@
-
-function copyCode(){
- const code=document.querySelector('code').innerText;
- navigator.clipboard.writeText(code);
- alert('Copied!');
-}
+function copyCode(){navigator.clipboard.writeText(document.querySelector('code').innerText);alert('Copied');}
