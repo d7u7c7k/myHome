@@ -1,21 +1,675 @@
-<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>raahoo Portfolio</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="css/style.css">
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="토스 미니앱을 출시한 고1 개발자 raahoo의 포트폴리오 웹사이트" />
+  <meta name="theme-color" content="#09090b" />
+  <meta property="og:title" content="raahoo | Developer Portfolio" />
+  <meta property="og:description" content="토스 미니앱 출시 경험, 프로젝트, Code Archive, GitHub 활동을 담은 포트폴리오" />
+  <meta property="og:type" content="website" />
+  <title>raahoo | Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular']
+          },
+          boxShadow: {
+            soft: '0 20px 80px rgba(0,0,0,.35)',
+            glow: '0 0 0 1px rgba(96,165,250,.35), 0 24px 80px rgba(37,99,235,.18)'
+          },
+          colors: {
+            surface: '#0f1115',
+            panel: '#131722',
+            border: '#243041',
+            accent: '#3b82f6'
+          },
+          animation: {
+            float: 'float 8s ease-in-out infinite',
+            pulseSoft: 'pulseSoft 3.5s ease-in-out infinite'
+          },
+          keyframes: {
+            float: {
+              '0%,100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            pulseSoft: {
+              '0%,100%': { opacity: .6 },
+              '50%': { opacity: 1 }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-python.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-typescript.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-bash.min.js" defer></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(59,130,246,.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(14,165,233,.13), transparent 24%),
+        linear-gradient(180deg, #09090b 0%, #0b1020 100%);
+    }
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(148,163,184,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 82%);
+    }
+    .glass {
+      background: rgba(15, 17, 21, 0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(36, 48, 65, 0.88);
+    }
+    .card-hover {
+      transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease, background .28s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      border-color: rgba(96,165,250,.56);
+      box-shadow: 0 20px 80px rgba(0,0,0,.35);
+    }
+    .section-title { letter-spacing: -0.03em; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+    .code-scroll::-webkit-scrollbar { height: 10px; width: 10px; }
+    .code-scroll::-webkit-scrollbar-thumb { background: rgba(148,163,184,.25); border-radius: 999px; }
+    .code-scroll::-webkit-scrollbar-track { background: transparent; }
+  </style>
 </head>
-<body class="bg-zinc-950 text-white">
-<nav class="sticky top-0 backdrop-blur border-b border-zinc-800"><div class="max-w-6xl mx-auto p-5 flex justify-between"><b>raahoo</b><div class="space-x-5"><a href="#exp">Experience</a><a href="#projects">Projects</a><a href="#archive">Archive</a></div></div></nav>
-<section class="max-w-6xl mx-auto min-h-[70vh] flex items-center p-6">
-<div><span class="text-blue-400 font-semibold">High School Software Developer</span>
-<h1 class="text-6xl font-black mt-4">토스 미니앱을<br>출시한 개발자</h1>
-<p class="text-zinc-400 mt-6 max-w-xl">기획부터 개발, 출시까지 경험했습니다. 깔끔한 제품과 개발자 경험을 만드는 것을 좋아합니다.</p>
-<div class="mt-8 flex gap-4"><button class="btn">Projects</button><button class="btn2">GitHub</button></div></div></section>
-<section id="exp" class="max-w-6xl mx-auto p-6"><h2 class="title">Experience</h2><div class="card"><h3>Toss Mini App</h3><p>Appintos 등 토스 미니앱 서비스 기획·개발 및 출시.</p></div></section>
-<section id="projects" class="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-5">
-<div class="card"><h3>Subway API</h3><p>FastAPI 기반 API</p></div>
-<div class="card"><h3>Discord Bot</h3><p>레벨 시스템</p></div></section>
-<section id="archive" class="max-w-6xl mx-auto p-6"><h2 class="title">Code Archive</h2>
-<input id="search" class="w-full bg-zinc-900 p-3 rounded mb-4" placeholder="Search code...">
-<div class="card"><pre><code>fetch('/api').then(r=>r.json())</code></pre><button onclick="copyCode()">Copy</button></div></section>
-</body><script src="js/app.js"></script></html>
+<body class="font-sans text-slate-100 selection:bg-blue-500/30 selection:text-white">
+  <div class="fixed inset-0 -z-10 pointer-events-none grid-bg opacity-60"></div>
+  <div class="fixed left-[-8rem] top-[-8rem] h-72 w-72 rounded-full bg-blue-500/15 blur-3xl -z-10 animate-float"></div>
+  <div class="fixed right-[-8rem] top-40 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl -z-10 animate-float" style="animation-delay:-3s"></div>
+
+  <header class="sticky top-0 z-50 border-b border-white/5 bg-[#09090b]/70 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <a href="#top" class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-2xl border border-blue-500/30 bg-blue-500/10 text-sm font-bold text-blue-300 shadow-glow">r</div>
+        <div>
+          <div class="text-sm font-semibold tracking-tight">raahoo</div>
+          <div class="text-xs text-slate-400">High School Software Developer</div>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-7 text-sm text-slate-300 md:flex">
+        <a href="#experience" class="hover:text-white">Experience</a>
+        <a href="#projects" class="hover:text-white">Projects</a>
+        <a href="#archive" class="hover:text-white">Code Archive</a>
+        <a href="#stack" class="hover:text-white">Stack</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </nav>
+      <a href="#contact" class="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-200 transition hover:bg-blue-500/20">협업 문의</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="mx-auto max-w-7xl px-4 pb-10 pt-16 sm:px-6 lg:px-8 lg:pt-24">
+      <div class="grid items-center gap-10 lg:grid-cols-[1.15fr_.85fr]">
+        <div class="reveal">
+          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs font-medium text-blue-200">
+            <span class="h-2 w-2 rounded-full bg-blue-400 animate-pulseSoft"></span>
+            Toss mini app 출시 경험 보유
+          </div>
+          <h1 class="section-title max-w-4xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-7xl">
+            토스 미니앱을 출시한
+            <span class="bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">고1 개발자, raahoo</span>입니다.
+          </h1>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+            실서비스 관점의 기획, 구현, 출시까지 경험한 학생 개발자입니다. 빠른 프로토타이핑, 깔끔한 UI, 사용자 중심 흐름을 바탕으로 앱과 웹을 설계합니다.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#projects" class="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:scale-[1.01]">프로젝트 보기</a>
+            <a href="https://github.com/d7u7c7k" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10">GitHub</a>
+            <a href="#archive" class="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-semibold text-slate-200 transition hover:bg-white/10">Code Archive</a>
+          </div>
+          <div class="mt-10 grid gap-3 sm:grid-cols-3">
+            <div class="glass rounded-3xl p-4">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Focus</div>
+              <div class="mt-2 text-lg font-semibold">Product-minded UI</div>
+            </div>
+            <div class="glass rounded-3xl p-4">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Strength</div>
+              <div class="mt-2 text-lg font-semibold">Fast iteration</div>
+            </div>
+            <div class="glass rounded-3xl p-4">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Style</div>
+              <div class="mt-2 text-lg font-semibold">Minimal dark</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal lg:justify-self-end">
+          <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#10151f]/90 p-5 shadow-soft">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-400/10"></div>
+            <div class="relative flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-400">Profile</p>
+                <h2 class="mt-1 text-2xl font-semibold tracking-tight">raahoo</h2>
+              </div>
+              <div class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-300">Available</div>
+            </div>
+            <div class="relative mt-6 grid place-items-center rounded-[1.8rem] border border-white/10 bg-white/5 p-8">
+              <div class="flex h-44 w-44 items-center justify-center rounded-full border border-blue-400/20 bg-gradient-to-br from-blue-500/20 via-slate-900 to-cyan-500/20 text-7xl shadow-glow">🦆</div>
+              <p class="mt-5 text-center text-sm leading-7 text-slate-300">
+                Toss mini app 출시 경험을 중심으로, 실제로 쓸 수 있는 제품을 만드는 데 집중합니다.
+              </p>
+            </div>
+            <div class="relative mt-5 grid grid-cols-3 gap-3 text-center text-sm">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-3">
+                <div class="text-lg font-bold text-white">3+</div>
+                <div class="text-slate-400">Major projects</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-3">
+                <div class="text-lg font-bold text-white">1</div>
+                <div class="text-slate-400">Live mini app</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-3">
+                <div class="text-lg font-bold text-white">∞</div>
+                <div class="text-slate-400">Ideas</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="reveal mb-8 flex items-end justify-between gap-4">
+        <div>
+          <p class="text-sm font-medium uppercase tracking-[0.24em] text-blue-300/80">Experience</p>
+          <h2 class="section-title mt-3 text-3xl font-bold sm:text-4xl">Featured experience</h2>
+        </div>
+        <p class="hidden max-w-xl text-right text-sm leading-7 text-slate-400 md:block">실제로 서비스되는 맥락을 고려한 설계와 배포 경험을 가장 중요한 성과로 보여줍니다.</p>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-[1.1fr_.9fr]">
+        <article class="reveal card-hover glass overflow-hidden rounded-[2rem] p-6 sm:p-8">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="rounded-full bg-blue-500/15 px-3 py-1 text-xs font-semibold text-blue-200">Toss mini app</span>
+            <span class="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-200">LIVE</span>
+            <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300">Planning · Frontend · Launch</span>
+          </div>
+          <h3 class="mt-5 text-2xl font-bold tracking-tight sm:text-3xl">토스 앱 내 미니앱(Appintos 계열) 서비스 기획 및 출시</h3>
+          <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">
+            사용 흐름을 단순하게 만들고, 토스 특유의 직관적인 UI 톤에 맞춰 화면을 설계했습니다. 제품의 목적이 명확하게 전달되도록 정보 밀도를 조절하고, 실제 배포를 목표로 구현까지 마무리했습니다.
+          </p>
+          <div class="mt-6 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl border border-white/10 bg-black/20 p-4">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Role</div>
+              <div class="mt-2 font-semibold">Product + Frontend</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-black/20 p-4">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Result</div>
+              <div class="mt-2 font-semibold">Shipping experience</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-black/20 p-4">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Value</div>
+              <div class="mt-2 font-semibold">Real users in mind</div>
+            </div>
+          </div>
+        </article>
+        <aside class="reveal grid gap-4">
+          <div class="card-hover glass rounded-[2rem] p-6">
+            <div class="text-sm text-slate-400">Launch status</div>
+            <div class="mt-2 text-3xl font-bold text-white">Shipped</div>
+            <p class="mt-3 text-sm leading-7 text-slate-300">기획 → 구현 → 배포까지 이어지는 완결된 흐름을 강조합니다.</p>
+          </div>
+          <div class="card-hover glass rounded-[2rem] p-6">
+            <div class="text-sm text-slate-400">What I learned</div>
+            <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-300">
+              <li>• 사용자가 망설이지 않도록 첫 화면을 단순하게 구성</li>
+              <li>• 상태, 액션, 결과를 한눈에 보이도록 정리</li>
+              <li>• 실제 배포를 전제로 QA와 디테일까지 마무리</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="projects" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="reveal mb-8">
+        <p class="text-sm font-medium uppercase tracking-[0.24em] text-blue-300/80">Projects</p>
+        <h2 class="section-title mt-3 text-3xl font-bold sm:text-4xl">Selected builds</h2>
+      </div>
+      <div id="projectGrid" class="grid gap-5 md:grid-cols-2 xl:grid-cols-3"></div>
+    </section>
+
+    <section id="archive" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="reveal mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p class="text-sm font-medium uppercase tracking-[0.24em] text-blue-300/80">Code Archive</p>
+          <h2 class="section-title mt-3 text-3xl font-bold sm:text-4xl">깔끔하게 공유하는 코드 저장소</h2>
+        </div>
+        <p class="max-w-2xl text-sm leading-7 text-slate-400">검색, 태그 필터, 코드 하이라이팅, 복사 기능이 포함된 코드 아카이브입니다. Arduino, JavaScript, Python, App 관련 스니펫을 정리해 보여줄 수 있습니다.</p>
+      </div>
+      <div class="grid gap-5 lg:grid-cols-[.85fr_1.15fr]">
+        <div class="reveal glass rounded-[2rem] p-5 sm:p-6">
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <label class="flex-1">
+              <span class="mb-2 block text-xs font-medium uppercase tracking-[0.2em] text-slate-400">Search</span>
+              <input id="archiveSearch" type="search" placeholder="Search snippets..." class="w-full rounded-2xl border border-white/10 bg-[#0b0f17] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-blue-500/50" />
+            </label>
+            <div class="sm:w-44">
+              <span class="mb-2 block text-xs font-medium uppercase tracking-[0.2em] text-slate-400">Sort</span>
+              <select id="archiveSort" class="w-full rounded-2xl border border-white/10 bg-[#0b0f17] px-4 py-3 text-sm text-white outline-none focus:border-blue-500/50">
+                <option value="featured">Featured first</option>
+                <option value="recent">Recently added</option>
+                <option value="name">Name A-Z</option>
+              </select>
+            </div>
+          </div>
+          <div id="tagFilters" class="mt-4 flex flex-wrap gap-2"></div>
+          <div id="archiveList" class="mt-5 space-y-3"></div>
+        </div>
+        <div class="reveal glass rounded-[2rem] p-5 sm:p-6">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <p class="text-sm text-slate-400">Preview</p>
+              <h3 id="snippetTitle" class="mt-1 text-xl font-bold">선택한 코드가 여기에 표시됩니다</h3>
+            </div>
+            <div class="flex gap-2">
+              <button id="copyBtn" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium hover:bg-white/10">Copy</button>
+              <a id="repoBtn" href="#" target="_blank" rel="noreferrer" class="rounded-xl border border-blue-500/20 bg-blue-500/10 px-3 py-2 text-sm font-medium text-blue-200 hover:bg-blue-500/20">GitHub</a>
+            </div>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
+            <span id="snippetLang" class="rounded-full bg-white/5 px-3 py-1">Language</span>
+            <span id="snippetTags" class="rounded-full bg-white/5 px-3 py-1">Tags</span>
+          </div>
+          <p id="snippetDesc" class="mt-4 text-sm leading-7 text-slate-300"></p>
+          <div class="mt-5 overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#0b1020]">
+            <div class="flex items-center gap-2 border-b border-white/10 px-4 py-3 text-xs text-slate-400">
+              <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-green-400/70"></span>
+              <span class="ml-2 font-mono">snippet</span>
+            </div>
+            <pre class="code-scroll m-0 max-h-[31rem] overflow-auto p-4 text-[13px] leading-7"><code id="snippetCode" class="language-javascript"></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="repos" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="reveal mb-8">
+        <p class="text-sm font-medium uppercase tracking-[0.24em] text-blue-300/80">GitHub</p>
+        <h2 class="section-title mt-3 text-3xl font-bold sm:text-4xl">Live repositories</h2>
+      </div>
+      <div id="repoGrid" class="grid gap-5 md:grid-cols-2 xl:grid-cols-3"></div>
+    </section>
+
+    <section id="stack" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="reveal mb-8">
+        <p class="text-sm font-medium uppercase tracking-[0.24em] text-blue-300/80">Stack</p>
+        <h2 class="section-title mt-3 text-3xl font-bold sm:text-4xl">Tools & tech</h2>
+      </div>
+      <div class="reveal grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6" id="stackGrid"></div>
+    </section>
+
+    <section id="contact" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="reveal glass overflow-hidden rounded-[2rem] p-6 sm:p-8 lg:p-10">
+        <div class="grid items-center gap-8 lg:grid-cols-[1.15fr_.85fr]">
+          <div>
+            <p class="text-sm font-medium uppercase tracking-[0.24em] text-blue-300/80">Contact</p>
+            <h2 class="section-title mt-3 text-3xl font-bold sm:text-4xl">Let's build something useful.</h2>
+            <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-300">GitHub, 이메일, 그리고 필요한 경우 프로젝트 설명까지 한 번에 연결할 수 있는 포트폴리오 구조입니다. 실제 협업과 문의가 들어오도록 CTA를 명확하게 구성했습니다.</p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a href="https://github.com/d7u7c7k" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:scale-[1.01]">GitHub</a>
+              <a href="mailto:your-email@example.com" class="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10">Email</a>
+            </div>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <div class="rounded-3xl border border-white/10 bg-black/20 p-5">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-400">GitHub</div>
+              <div class="mt-2 text-lg font-semibold">d7u7c7k</div>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-black/20 p-5">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Email</div>
+              <div class="mt-2 text-lg font-semibold">your-email@example.com</div>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-black/20 p-5 sm:col-span-2">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Focus</div>
+              <div class="mt-2 text-lg font-semibold">Mobile-first, minimal, product-oriented UI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5 py-8 text-center text-sm text-slate-500">Designed & developed by raahoo · myHome · 2026</footer>
+
+  <script>
+    const projectData = [
+      {
+        title: 'Toss Mini App',
+        tag: 'Featured',
+        year: '2026',
+        status: 'LIVE',
+        desc: '토스 앱 내 미니앱 서비스의 기획, 구현, 출시를 담당한 대표 프로젝트입니다.',
+        tech: ['Product', 'UI/UX', 'Frontend'],
+        accent: 'from-blue-500/20 to-cyan-400/10'
+      },
+      {
+        title: 'App-In-Toss Subway Guide',
+        tag: 'App',
+        year: '2026',
+        status: 'Shipping',
+        desc: '수도권 지하철 안내 흐름을 정리한 App-in-Toss 연계 프로젝트입니다.',
+        tech: ['API', 'Routing', 'Design'],
+        accent: 'from-cyan-500/20 to-blue-400/10'
+      },
+      {
+        title: 'Raahoo Zip',
+        tag: 'Web',
+        year: '2025',
+        status: 'Open',
+        desc: '개인 브랜딩과 실험을 위한 모듈형 웹 프로젝트입니다.',
+        tech: ['HTML', 'JS', 'Branding'],
+        accent: 'from-indigo-500/20 to-blue-400/10'
+      },
+      {
+        title: 'Subway API',
+        tag: 'Backend',
+        year: '2025',
+        status: 'Public',
+        desc: 'FastAPI 기반 지하철 라우팅과 역 정보 제공 API입니다.',
+        tech: ['Python', 'FastAPI', 'Data'],
+        accent: 'from-emerald-500/20 to-cyan-400/10'
+      },
+      {
+        title: 'Discord Level Bot',
+        tag: 'Automation',
+        year: '2025',
+        status: 'Active',
+        desc: '레벨링, 출석, 역할 부여를 포함한 디스코드 봇 프로젝트입니다.',
+        tech: ['Python', 'SQLite', 'Discord'],
+        accent: 'from-violet-500/20 to-indigo-400/10'
+      },
+      {
+        title: 'SkriptTool',
+        tag: 'Tooling',
+        year: '2025',
+        status: 'Utility',
+        desc: '마인크래프트 Skript 작업을 도와주는 유틸리티 프로젝트입니다.',
+        tech: ['Java', 'Tools', 'Game Dev'],
+        accent: 'from-amber-500/20 to-orange-400/10'
+      }
+    ];
+
+    const archiveItems = [
+      {
+        title: 'FastAPI Subway API',
+        lang: 'python',
+        languageLabel: 'Python',
+        tags: ['python', 'backend', 'api'],
+        featured: true,
+        repo: 'https://github.com/d7u7c7k/App-In-Toss_subway-guide',
+        description: '실제 서비스에서 바로 참고할 수 있도록 정리한 FastAPI 라우팅 예제입니다.',
+        code: `from fastapi import FastAPI\n\napp = FastAPI(title="Subway API")\n\n@app.get("/health")\ndef health():\n    return {"ok": True, "service": "subway-api"}\n\n@app.get("/stations/{name}")\ndef station(name: str):\n    return {"station": name, "status": "ready"}`
+      },
+      {
+        title: 'Smooth Scroll Navigation',
+        lang: 'javascript',
+        languageLabel: 'JavaScript',
+        tags: ['javascript', 'ui', 'frontend'],
+        featured: true,
+        repo: 'https://github.com/d7u7c7k/myHome',
+        description: '모던한 랜딩 페이지에 자연스러운 스크롤 경험을 더하는 코드입니다.',
+        code: `const links = document.querySelectorAll('a[href^="#"]');\nlinks.forEach(link => {\n  link.addEventListener('click', (e) => {\n    const target = document.querySelector(link.getAttribute('href'));\n    if (!target) return;\n    e.preventDefault();\n    target.scrollIntoView({ behavior: 'smooth', block: 'start' });\n  });\n});`
+      },
+      {
+        title: 'Arduino LED Matrix',
+        lang: 'cpp',
+        languageLabel: 'Arduino',
+        tags: ['arduino', 'embedded', 'hardware'],
+        featured: false,
+        repo: 'https://github.com/d7u7c7k/SkriptTool',
+        description: '하드웨어 제어 감각을 보여줄 수 있는 작은 예시 스니펫입니다.',
+        code: `const int ledPin = 13;\n\nvoid setup() {\n  pinMode(ledPin, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(ledPin, HIGH);\n  delay(500);\n  digitalWrite(ledPin, LOW);\n  delay(500);\n}`
+      },
+      {
+        title: 'GitHub Repos Fetch',
+        lang: 'javascript',
+        languageLabel: 'JavaScript',
+        tags: ['github', 'api', 'data'],
+        featured: false,
+        repo: 'https://github.com/d7u7c7k/myHome',
+        description: 'GitHub API를 통해 저장소 목록을 끌어와 포트폴리오에 보여주는 코드입니다.',
+        code: `async function loadRepos() {\n  const res = await fetch('https://api.github.com/users/d7u7c7k/repos?sort=updated&per_page=100');\n  const repos = await res.json();\n  return repos.filter(repo => !repo.fork);\n}`
+      },
+      {
+        title: 'Theme Toggle State',
+        lang: 'javascript',
+        languageLabel: 'JavaScript',
+        tags: ['theme', 'ux', 'storage'],
+        featured: false,
+        repo: 'https://github.com/d7u7c7k/myHome',
+        description: '사용자 선호를 localStorage에 저장하는 다크 모드 토글 예시입니다.',
+        code: `const savedTheme = localStorage.getItem('theme') || 'dark';\ndocument.documentElement.classList.toggle('dark', savedTheme === 'dark');\n\nfunction setTheme(theme) {\n  localStorage.setItem('theme', theme);\n}`
+      },
+      {
+        title: 'Deployment Notes',
+        lang: 'bash',
+        languageLabel: 'Shell',
+        tags: ['git', 'deploy', 'pages'],
+        featured: false,
+        repo: 'https://github.com/d7u7c7k/myHome',
+        description: 'GitHub Pages 배포를 위한 기본 커밋 흐름을 정리한 텍스트입니다.',
+        code: `git add .\ngit commit -m "feat: portfolio website"\ngit push origin main`
+      }
+    ];
+
+    const stack = ['HTML','Tailwind CSS','JavaScript','Python','FastAPI','Git','GitHub','SQLite','Arduino','Prism.js','Responsive UI','Product Thinking'];
+
+    const projectGrid = document.getElementById('projectGrid');
+    const repoGrid = document.getElementById('repoGrid');
+    const stackGrid = document.getElementById('stackGrid');
+    const archiveList = document.getElementById('archiveList');
+    const tagFilters = document.getElementById('tagFilters');
+    const archiveSearch = document.getElementById('archiveSearch');
+    const archiveSort = document.getElementById('archiveSort');
+    const snippetTitle = document.getElementById('snippetTitle');
+    const snippetDesc = document.getElementById('snippetDesc');
+    const snippetCode = document.getElementById('snippetCode');
+    const snippetLang = document.getElementById('snippetLang');
+    const snippetTags = document.getElementById('snippetTags');
+    const copyBtn = document.getElementById('copyBtn');
+    const repoBtn = document.getElementById('repoBtn');
+
+    const state = {
+      activeTag: 'all',
+      query: '',
+      sort: 'featured',
+      activeSnippet: archiveItems[0]
+    };
+
+    function projectCard(project) {
+      return `
+        <article class="reveal card-hover glass rounded-[1.8rem] p-6">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">${project.tag}</span>
+              <h3 class="mt-4 text-xl font-bold tracking-tight">${project.title}</h3>
+            </div>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">${project.year}</span>
+          </div>
+          <div class="mt-5 rounded-3xl border border-white/10 bg-gradient-to-br ${project.accent} p-5">
+            <p class="text-sm leading-7 text-slate-200">${project.desc}</p>
+          </div>
+          <div class="mt-5 flex flex-wrap gap-2">
+            ${project.tech.map(t => `<span class="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-slate-300">${t}</span>`).join('')}
+          </div>
+          <div class="mt-6 flex items-center justify-between text-sm text-slate-400">
+            <span>${project.status}</span>
+            <span class="text-blue-300">View details →</span>
+          </div>
+        </article>
+      `;
+    }
+
+    function archiveCard(item) {
+      const active = state.activeSnippet?.title === item.title;
+      return `
+        <button data-snippet="${item.title}" class="text-left w-full rounded-2xl border ${active ? 'border-blue-500/50 bg-blue-500/10' : 'border-white/10 bg-white/5'} p-4 transition hover:border-blue-400/40 hover:bg-blue-500/10">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-400">${item.languageLabel}</div>
+              <div class="mt-2 text-base font-semibold text-white">${item.title}</div>
+            </div>
+            ${item.featured ? '<span class="rounded-full bg-emerald-500/15 px-2.5 py-1 text-[11px] font-semibold text-emerald-200">Featured</span>' : ''}
+          </div>
+          <p class="mt-3 text-sm leading-7 text-slate-300">${item.description}</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            ${item.tags.map(t => `<span class="rounded-full border border-white/10 bg-black/20 px-2.5 py-1 text-[11px] text-slate-400">#${t}</span>`).join('')}
+          </div>
+        </button>
+      `;
+    }
+
+    function renderProjects() {
+      projectGrid.innerHTML = projectData.map(projectCard).join('');
+    }
+
+    function renderStack() {
+      stackGrid.innerHTML = stack.map(item => `
+        <div class="glass card-hover flex items-center gap-3 rounded-3xl px-4 py-4">
+          <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-sm font-bold text-blue-200">${item.slice(0,2).toUpperCase()}</div>
+          <div>
+            <div class="text-sm font-semibold text-white">${item}</div>
+            <div class="text-xs text-slate-400">Used in production-ready builds</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function getFilteredArchive() {
+      const q = state.query.trim().toLowerCase();
+      let items = archiveItems.filter(item => {
+        const matchesQuery = !q || [item.title, item.description, item.languageLabel, ...item.tags].some(v => v.toLowerCase().includes(q));
+        const matchesTag = state.activeTag === 'all' || item.tags.includes(state.activeTag);
+        return matchesQuery && matchesTag;
+      });
+      if (state.sort === 'recent') items = [...items].reverse();
+      if (state.sort === 'name') items = [...items].sort((a, b) => a.title.localeCompare(b.title));
+      if (state.sort === 'featured') items = [...items].sort((a, b) => Number(b.featured) - Number(a.featured));
+      return items;
+    }
+
+    function renderArchive() {
+      const items = getFilteredArchive();
+      archiveList.innerHTML = items.map(archiveCard).join('') || `<div class="rounded-2xl border border-dashed border-white/10 bg-white/5 p-6 text-sm text-slate-400">검색 결과가 없습니다.</div>`;
+      archiveList.querySelectorAll('[data-snippet]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const snippet = archiveItems.find(s => s.title === btn.dataset.snippet);
+          selectSnippet(snippet);
+        });
+      });
+    }
+
+    function selectSnippet(snippet) {
+      state.activeSnippet = snippet;
+      snippetTitle.textContent = snippet.title;
+      snippetDesc.textContent = snippet.description;
+      snippetCode.textContent = snippet.code;
+      snippetCode.className = `language-${snippet.lang}`;
+      snippetLang.textContent = snippet.languageLabel;
+      snippetTags.textContent = snippet.tags.map(t => `#${t}`).join(' · ');
+      repoBtn.href = snippet.repo;
+      if (window.Prism) Prism.highlightElement(snippetCode);
+      renderArchive();
+    }
+
+    function renderTags() {
+      const tags = ['all', ...new Set(archiveItems.flatMap(item => item.tags))];
+      tagFilters.innerHTML = tags.map(tag => `
+        <button data-tag="${tag}" class="rounded-full border px-3 py-1.5 text-xs font-medium transition ${tag === 'all' && state.activeTag === 'all' ? 'border-blue-500/50 bg-blue-500/10 text-blue-200' : 'border-white/10 bg-white/5 text-slate-300 hover:bg-blue-500/10'}">${tag === 'all' ? 'All' : '#' + tag}</button>
+      `).join('');
+      tagFilters.querySelectorAll('[data-tag]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.activeTag = btn.dataset.tag;
+          renderTags();
+          renderArchive();
+        });
+      });
+    }
+
+    async function loadRepos() {
+      repoGrid.innerHTML = `<div class="reveal glass rounded-[1.8rem] p-6 text-sm text-slate-400">GitHub 저장소를 불러오는 중...</div>`;
+      try {
+        const res = await fetch('https://api.github.com/users/d7u7c7k/repos?sort=updated&per_page=100');
+        const repos = await res.json();
+        const visible = repos.filter(repo => !repo.fork).slice(0, 6);
+        repoGrid.innerHTML = visible.map(repo => `
+          <a href="${repo.html_url}" target="_blank" rel="noreferrer" class="reveal card-hover glass block rounded-[1.8rem] p-6">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-slate-400">Repository</p>
+                <h3 class="mt-3 text-xl font-bold tracking-tight">${repo.name}</h3>
+              </div>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">${repo.language || 'Code'}</span>
+            </div>
+            <p class="mt-4 min-h-14 text-sm leading-7 text-slate-300">${repo.description || 'No description provided.'}</p>
+            <div class="mt-5 flex items-center justify-between text-sm text-slate-400">
+              <span>★ ${repo.stargazers_count}</span>
+              <span>Updated ${new Date(repo.updated_at).toLocaleDateString('ko-KR')}</span>
+            </div>
+          </a>
+        `).join('');
+      } catch (error) {
+        repoGrid.innerHTML = `<div class="reveal glass rounded-[1.8rem] p-6 text-sm text-slate-400">GitHub API를 불러오지 못했습니다.</div>`;
+      }
+    }
+
+    archiveSearch.addEventListener('input', (e) => {
+      state.query = e.target.value;
+      renderArchive();
+    });
+
+    archiveSort.addEventListener('change', (e) => {
+      state.sort = e.target.value;
+      renderArchive();
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(state.activeSnippet.code);
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => (copyBtn.textContent = 'Copy'), 1500);
+      } catch {
+        copyBtn.textContent = 'Failed';
+        setTimeout(() => (copyBtn.textContent = 'Copy'), 1500);
+      }
+    });
+
+    function revealOnScroll() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    renderProjects();
+    renderStack();
+    renderTags();
+    selectSnippet(state.activeSnippet);
+    loadRepos();
+    revealOnScroll();
+  </script>
+</body>
+</html>
